@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: jwt-blacklist-postgres
+    environment:
+      - POSTGRES_PASSWORD=111111
+    expose:
+      - '5432'
+    ports:
+      - '5433:5432' # increase port number if you already have postgres running on your machine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  redis:
+    image: redis:latest
+    container_name: jwt-blacklist-redis
+    expose:
+      - '6379'
+    ports:
+      - '6380:6379' # increase port number if you already have redis running on your machine
+volumes:
+  postgres-data:
